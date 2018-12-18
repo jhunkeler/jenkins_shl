@@ -11,8 +11,7 @@ class DataConfig implements Serializable {
     int keep_days = 10
     def steps
     def server_conn
-    String server_ident
-    String path
+    String scan_path
     def data = [:]
     def buildInfo
 
@@ -80,7 +79,7 @@ class DataConfig implements Serializable {
             maxDays: this.keep_days, \
             deleteBuildArtifacts: !this.keep_data
 
-        this.server_conn.publishBuildInfo this.buildInfo
+        this.server_conn.publishBuildInfo(this.buildInfo)
 
     } // end stage Artifactory
 }
