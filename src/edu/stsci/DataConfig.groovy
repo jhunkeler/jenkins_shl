@@ -15,11 +15,11 @@ class DataConfig implements Serializable {
     def data = [:]
     def buildInfo
 
-    DataConfig(steps, connection) {
+    DataConfig(steps, connection, build_info) {
         this.steps = steps
         this.server_ident = server_ident
         this.server_conn = connection // steps.Artifactory.server(this.server_ident)
-        this.buildInfo = this.server_conn.newBuildInfo()
+        this.buildInfo = build_info
         this.buildInfo.env.capture = true
         this.buildInfo.env.collect()
         // Construct absolute path to data
